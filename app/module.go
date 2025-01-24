@@ -1,6 +1,10 @@
 package app
 
-type Repository interface{}
+type Repository interface {
+	Create(interface{}) (interface{}, error)
+	Update(interface{}) (interface{}, error)
+	Delete(interface{}) (interface{}, error)
+}
 
 type Service interface{}
 

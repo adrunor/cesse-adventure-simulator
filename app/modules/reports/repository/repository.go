@@ -1,10 +1,13 @@
 package repository
 
-import "simulator/systems/db"
+import (
+	"simulator/systems"
+)
 
-type ReportRepository interface {
+type ImplRepository struct {
+	database *systems.Database
 }
 
-type ReportRepositoryImpl struct {
-	db.Database
+func (d *ImplRepository) Create(model interface{}) (interface{}, error) {
+	return d.database.Create(model)
 }

@@ -6,7 +6,11 @@ type Env interface {
 	Get(string) (string, error)
 }
 
-type Database interface{}
+type Database interface {
+	Create(model interface{}) (interface{}, error)
+	Update(interface{}) (interface{}, error)
+	Delete(interface{}) (interface{}, error)
+}
 
 type Router interface {
 	GetRouter() *gin.Engine

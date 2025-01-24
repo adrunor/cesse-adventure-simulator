@@ -6,19 +6,32 @@ import (
 	"log"
 )
 
-type DatabaseImpl struct {
+type Impl struct {
 	Db *gorm.DB
 }
 
-func NewDatabase() *DatabaseImpl {
+func NewDatabase() *Impl {
 	return setUpDatabase()
 }
 
-func setUpDatabase() *DatabaseImpl {
+func setUpDatabase() *Impl {
 	db, err := gorm.Open(sqlite.Open("database.db"), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	return &DatabaseImpl{db}
+	return &Impl{db}
+}
+
+func (db *Impl) Create(model interface{}) (interface{}, error) {
+	result := db.Db.Create(model)
+	return result.RowsAffected, result.Error
+}
+
+func (db *Impl) Update(model interface{}) (interface{}, error) {
+	return nil, nil
+}
+
+func (db *Impl) Delete(model interface{}) (interface{}, error) {
+	return nil, nil
 }

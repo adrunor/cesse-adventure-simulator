@@ -6,8 +6,6 @@ import (
 )
 
 func SetupModule(context *systems.Context) {
-	api := context.Router().GetRouter().Group("/api")
 
-	controllers.AddRoutes(api)
-
+	controllers.Setup(context)
 }
