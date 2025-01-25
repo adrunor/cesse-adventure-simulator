@@ -5,17 +5,19 @@ import (
 	"simulator/systems"
 	"simulator/systems/database"
 	"simulator/systems/env"
+	"simulator/systems/migration"
 	"simulator/systems/router"
 )
 
 func Run() {
-	context := systems.NewContext(
-		env.NewEnv(),
-		database.NewDatabase(),
-		router.NewRouter(),
-	)
+	e := env.NewEnv()
+	d := database.NewDatabase()
+	r := router.NewRouter()
+	ctx := systems.NewContext(e, d, r)
 
-	reports.SetupModule(context)
+	migration.Migrate(d.Db)
 
-	context.Router().Run()
+	reports.SetupModule(ctx)
+
+	r.Run()
 }

@@ -26,6 +26,7 @@ go.work.sum
 
 # Database file
 database.db
+*.sqlite
 
 #idea folder
 .idea

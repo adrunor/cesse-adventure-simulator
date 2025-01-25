@@ -5,15 +5,16 @@ import (
 	"log"
 	"net/http"
 	"simulator/app/modules/reports/models"
+	"simulator/app/modules/reports/repository"
 	"simulator/systems"
 )
 
 var router systems.Router
-var database systems.Database
+var reportRepository repository.ReportConfigurationRepository
 
-func Setup(context *systems.Context) {
-	router = context.Router()
-	database = context.Database()
+func Setup(r systems.Router, rcr repository.ReportConfigurationRepository) {
+	router = r
+	reportRepository = rcr
 
 	configureRoute()
 }
@@ -29,6 +30,11 @@ func postReportConfiguration(context *gin.Context) {
 
 	if err := context.BindJSON(&newReportConfiguration); err != nil {
 		log.Fatal(err)
+	}
+
+	_, err := reportRepository.Create(&newReportConfiguration)
+	if err != nil {
+		return
 	}
 
 	context.String(http.StatusCreated, "")

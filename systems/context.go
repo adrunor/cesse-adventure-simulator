@@ -8,8 +8,8 @@ type Env interface {
 
 type Database interface {
 	Create(model interface{}) (interface{}, error)
-	Update(interface{}) (interface{}, error)
-	Delete(interface{}) (interface{}, error)
+	Update(model interface{}) (interface{}, error)
+	Delete(model interface{}) (interface{}, error)
 }
 
 type Router interface {

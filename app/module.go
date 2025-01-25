@@ -1,7 +1,7 @@
 package app
 
 type Repository interface {
-	Create(interface{}) (interface{}, error)
+	Insert(interface{}) (interface{}, error)
 	Update(interface{}) (interface{}, error)
 	Delete(interface{}) (interface{}, error)
 }

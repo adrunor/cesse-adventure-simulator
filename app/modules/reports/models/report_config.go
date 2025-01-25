@@ -7,7 +7,7 @@ import (
 
 type ReportConfiguration struct {
 	gorm.Model
-	BaseExperience         uint16        `json:"primary_key"`
+	BaseExperience         uint16        `json:"base_experience"`
 	IncreaseRate           uint16        `json:"increase_rate"`
 	MaxLevel               uint8         `json:"max_level"`
 	CombatExperienceRate   uint16        `json:"combat_experience_rate"`
