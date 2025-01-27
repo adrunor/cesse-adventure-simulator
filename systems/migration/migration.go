@@ -3,13 +3,13 @@ package migration
 import (
 	"gorm.io/gorm"
 	"log"
-	"simulator/app/modules/reports/models"
+	"simulator/app/modules/level_simulation/models"
 )
 
 func Migrate(db *gorm.DB) {
 	if err := db.AutoMigrate(
-		models.ReportConfiguration{},
-		models.ReportResult{},
+		models.LevelConfig{},
+		models.LevelResult{},
 	); err != nil {
 		log.Fatal(err)
 	}

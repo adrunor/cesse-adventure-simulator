@@ -35,3 +35,8 @@ func (db *DatabaseImpl) Update(model interface{}) (interface{}, error) {
 func (db *DatabaseImpl) Delete(model interface{}) (interface{}, error) {
 	return nil, nil
 }
+
+func (db *DatabaseImpl) Find(model interface{}, id interface{}) error {
+	result := db.Db.First(&model, id)
+	return result.Error
+}

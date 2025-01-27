@@ -1,7 +1,7 @@
 package app
 
 import (
-	"simulator/app/modules/reports"
+	"simulator/app/modules/level_simulation"
 	"simulator/systems"
 	"simulator/systems/database"
 	"simulator/systems/env"
@@ -17,7 +17,7 @@ func Run() {
 
 	migration.Migrate(d.Db)
 
-	reports.SetupModule(ctx)
+	level_simulation.SetupModule(ctx)
 
 	r.Run()
 }

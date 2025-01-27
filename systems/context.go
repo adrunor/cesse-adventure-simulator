@@ -10,6 +10,7 @@ type Database interface {
 	Create(model interface{}) (interface{}, error)
 	Update(model interface{}) (interface{}, error)
 	Delete(model interface{}) (interface{}, error)
+	Find(model interface{}, id interface{}) error
 }
 
 type Router interface {
